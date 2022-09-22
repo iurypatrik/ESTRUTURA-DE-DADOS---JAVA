@@ -1,0 +1,172 @@
+import java.util.*;
+import java.math.*;
+import java.util.Arrays.*;
+import java.util.Iterator.*;
+
+class Main {
+public static void main(String[] args) {
+Scanner entrada = new Scanner(System.in);
+  
+System.out.print("\n\nQuestão 01\n");
+
+// 1. Faça um programa para apresentar na tela todos os números inteiros entre 100 e 1 (ordem decrescente). 
+
+for(int i = 100;i > 0;i-=1){
+System.out.printf("\n"+i);
+}
+
+System.out.print("\n\n*********************FIM****************************************\n");
+
+System.out.print("\n\nQuestão 02\n");
+
+// 2. Faça um programa para apresentar todos os números da sequência a seguir: 0.00, 0.25, 0.50, 0.75, 1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75, 3.00, 3.25, 3.50, 3.75, 4.00. 
+
+for(float i = 0;i <= 4;i+=0.25){
+System.out.printf("\n%.2f",i);
+}
+
+System.out.print("\n\n************************FIM*************************************\n");
+
+System.out.print("\n\nQuestão 03\n");
+
+// 3. Faça um programa em Python que, a partir de um valor N informado pelo usuário, exiba os números seguindo a disposição abaixo. Exemplos de entrada e saída para os valores de N igual a 4 e 6 foram dados:
+
+System.out.print("\nDigite um numero: ");
+int x = entrada.nextInt();
+int i = 1;
+while(i <= x){
+  for (int a = 1;a <= x;a += 1){
+  System.out.print(i+" ");
+}
+System.out.println();
+i+=1;
+}
+
+System.out.print("\n\n************************FIM*************************************\n");
+
+System.out.print("\n\nQuestão 04\n");
+
+// O Sr. Manoel Joaquim expandiu seus negócios para além dos negócios de 1,99 e agora possui uma loja de conveniências. Faça um programa que implemente uma caixa registradora rudimentar. O programa deverá receber um número desconhecido de valores referentes aos preços das mercadorias. Um valor zero deve ser informado pelo operador para indicar o final da compra. O programa deve então mostrar o total da compra e perguntar o valor em dinheiro que o cliente forneceu, para então calcular e mostrar o valor do troco. Após esta operação, o programa deverá voltar ao ponto inicial, para registrar a próxima compra. A saída deve ser conforme o exemplo abaixo: 
+
+List<Double> lista = new ArrayList<Double>();
+
+double num = 0;  
+while (true){
+  System.out.print("\nDigite um numero: ");
+  num = entrada.nextDouble();
+  if (num == 0){
+    break;
+  }
+  lista.add(num);
+  
+}
+double sum = lista.stream().mapToInt(Double::intValue).sum();
+
+System.out.printf("\nVocê comprou %d produtos, o valor total da compra é de R$%.2f \nInsira o valor do pagamento e veja seu troco (R$): ",lista.size(),sum);
+double troco = entrada.nextDouble();
+System.out.printf("\nSeu troco é R$%.2f",(troco-sum));
+
+
+System.out.print("\n\n************************FIM*************************************\n");
+  
+System.out.print("\n\nQuestão 05\n");
+
+// Faça um programa que calcula a média aritmética de um conjunto de números pares que forem fornecidos pelo usuário. O valor de finalização será a entrada do número 0. Observe que nada impede que o usuário forneça quantos números ímpares quiser, com a ressalva que esses números não serão contabilizados para média. Considere que os números informados sempre serão inteiros positivos ou zero. 
+
+List<Double> listas = new ArrayList<Double>();
+
+double nums = 0;  
+while (true){
+  System.out.print("\nDigite um numero: ");
+  nums = entrada.nextDouble();
+  if (nums == 0){
+    break;
+  }
+  if (nums%2==0){
+  listas.add(nums);
+  }
+  else{
+    continue;
+  }
+}
+double sums = listas.stream().mapToInt(Double::intValue).sum();
+
+System.out.printf("\na quantidade de numeros Par é %d , a soma é %.0f e a media é %.2f ",listas.size(),sums,sums/(listas.size()));
+
+System.out.print("\n\n************************FIM*************************************\n");
+
+System.out.print("\n\nQuestão 06\n");
+
+// 6. Escreva um programa em Python que calcule o valor de H, sendo que ele é determinado pela série a seguir: H = 1/1 + 3/2 + 5/3 + 7/4 + ... + 99/50 
+
+
+double a = 1, b = 1,h = 0;
+
+while (true){
+h = h+(a/b);
+a+=2;
+b+=1;
+
+if (a > 99){
+  break;
+}
+}
+System.out.printf("\nH: %.2f",h);
+System.out.print("\n\n************************FIM*************************************\n");
+
+System.out.print("\n\nQuestão 07\n");
+
+// A pós seus tre inos para uma competição de natação, Benedito quer verificar seu desempenho em relação aos seus tempos de treino e ao tempo recorde regional. Para auxiliálo nesta tarefa, você deve fazer um algoritmo que solicite uma quantidade regional (em segundos), e para cada treino, solicite o conjunto de tempos, seu programa deve calcular o N de treinos realizados, o tempo maior e o tempo do último recorde (em segundos) cronometrado. Para este menor tempo, e a média aritmética dos tempos de treino. Ao final, seu programa deve mostrar os resultados na tela e, caso o tempo médio seja menor que o tempo recorde informado, deve também mostrar uma mensagem indicando tal fato. Observe os exemplos abaixo.
+
+List<Double> tempo = new ArrayList<Double>();
+  
+System.out.print("\nInforme a quantidade de Treinos: ");
+double treino = entrada.nextDouble();
+System.out.print("\nInforme o Recorde Regional: ");
+double recorde = entrada.nextDouble();
+
+for (int cont = 1;cont <= treino;cont++){
+  System.out.print("\nDigite o tempo "+cont+": ");
+  double temp = entrada.nextDouble();
+  tempo.add(temp);
+  Collections.sort(tempo);
+}
+
+System.out.printf("\nForam computados %d tempos",tempo.size());
+System.out.print("\nO Maior tempo foi "+tempo.get(tempo.size()-1)+" segundos");
+System.out.print("\nO Menor tempo foi "+tempo.get(0)+" segundos");
+if (tempo.get(tempo.size()-1) <= recorde){
+  System.out.print("\nVocê está abaixo do recorde!");
+}
+else{
+  System.out.print("\nParabéns! Temos um novo recorde!");
+}
+System.out.print("\n\n************************FIM*************************************\n");
+
+System.out.print("\n\nQuestão 08\n");
+  
+// F aça um programa que receba o salário de um funcionário chamado Jorge. Sabese que outro funcionário, Saulo, tem salário equivalente a um terço do salário de Jorge. Jorge aplicará seu salário integralmente na caderneta de poupança, que rende 2% ao mês, e Saulo apl icará seu salário integralmente no fundo de renda fixa, que rende 5% ao mês. O tela a quantidade de meses necessário s programa deverá calcular e exibir na para que o valor pertencente a Saulo iguale ou ultrapasse o valor pertencente a Jorge.
+
+double saulo = 0;
+int cont = 0;
+
+System.out.print("\nInforme o salario de Jorge: ");
+double jorge = entrada.nextDouble();
+
+saulo = jorge/3;
+
+while (true){
+  jorge += 1.02;
+  saulo += 1.05;
+  cont++;
+  
+  if (jorge <= saulo){
+    System.out.println(cont+" Meses");
+    break;
+  }
+}
+
+System.out.print("\n\n************************FIM*************************************\n");
+  
+  }
+}
