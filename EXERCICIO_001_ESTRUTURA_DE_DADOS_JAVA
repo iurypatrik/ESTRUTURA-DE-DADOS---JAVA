@@ -1,0 +1,156 @@
+import java.util.*;
+import java.math.*;
+import java.util.Arrays.*;
+import java.util.Iterator.*;
+
+class Main {
+public static void main(String[] args) {
+Scanner entrada = new Scanner(System.in);
+
+// 1. Criar um programa que leia o destino do passageiro (Norte – 1, Nordeste – 2, Centro-Oeste – 3 e Sul – 4), se a viagem inclui retorno (ida e volta) e informar o preço da passagem conforme a tabela a seguir: 
+
+System.out.println("\n\nQuestão 01");
+  
+System.out.print("\nInforme o destino da sua viagem: (Norte – 1, Nordeste – 2, Centro-Oeste – 3 e Sul – 4): ");
+int viagem = entrada.nextInt();
+  
+System.out.print("\nInforme se é uma viagem só de ida ou ida e volta (ida - 1 e ida/volta - 2): ");
+int ir = entrada.nextInt();
+
+if (viagem == 1 && ir == 1)
+  System.out.print("\nO valor total da sua viagem é: R$ "+500.00);
+else if (viagem == 1 && ir == 2)
+  System.out.print("\nO valor total da sua viagem é: R$ "+900.00);
+
+if (viagem == 2 && ir == 1)
+  System.out.print("\nO valor total da sua viagem é: R$ "+350.00);
+else if (viagem == 2 && ir == 2)
+  System.out.print("\nO valor total da sua viagem é: R$ "+650.00);
+
+if (viagem == 3 && ir == 1)
+  System.out.print("\nO valor total da sua viagem é: R$ "+350.00);
+else if (viagem == 3 && ir == 2)
+  System.out.print("\nO valor total da sua viagem é: R$ "+600.00);
+
+if (viagem == 4 && ir == 1)
+  System.out.print("\nO valor total da sua viagem é: R$ "+300.00);
+else if (viagem == 4 && ir == 2)
+  System.out.print("\nO valor total da sua viagem é: R$ "+550.00);
+
+// 2. Escreva um programa que determine o grau de obesidade de uma pessoa, sendo fornecido como entrada o peso (em kilogramas) e a altura (em metros) da pessoa. O grau de obesidade é determinado pelo IMC – Índice de Massa Corpórea (IMC = Peso / Altura2). Adicionalmente, o programa deve emitir as mensagens correspondentes conforme a tabela a seguir: 
+
+System.out.println("\n\nQuestão 02");
+
+System.out.print("\n\nDigite seu peso(em Kg): "); 
+float peso = entrada.nextFloat();
+
+System.out.print("\n\nDigite sua altura(em Metros): "); 
+float altura = entrada.nextFloat();
+
+double imc = (peso/(Math.pow(altura,2)));
+
+if (imc < 18.5)
+  System.out.print("\nVocê está abaixo do peso ideal.");
+else if (imc >= 18.5 && imc <= 24.9)
+  System.out.print("\nParabéns — você está em seu peso normal!.");
+else if (imc >= 25 && imc <= 29.9)
+  System.out.print("\nVocê está acima de seu peso (sobrepeso).");
+else if (imc >= 30 && imc <= 34.9)
+  System.out.print("\nObesidade grau I.");
+else if (imc >= 35 && imc <= 39.9)
+  System.out.print("\nObesidade grau II.");
+else if (imc >= 40)
+  System.out.print("\nObesidade grau III.");
+
+//3. Faça um programa que receba a idade e o peso de uma pessoa. De acordo com a tabela a seguir, verifique e mostre em qual grupo de risco (1 a 9) essa pessoa se encaixa.  
+
+System.out.println("\n\nQuestão 03");
+
+System.out.print("\n\nDigite seu peso(em Kg): "); 
+float pesor = entrada.nextFloat();
+
+System.out.print("\n\nDigite sua idade: "); 
+int idade = entrada.nextInt();
+
+
+if (idade < 20 && pesor < 60)
+  System.out.print("\nSeu grau de risco é: "+9);
+else if (idade < 20 && (pesor >= 60 && pesor <= 90))
+  System.out.print("\nSeu grau de risco é: "+8);
+else if (idade < 20 && pesor > 90)
+  System.out.print("\nSeu grau de risco é: "+7);
+
+if ((idade >= 20 && idade <= 50) && pesor < 60)
+  System.out.print("\nSeu grau de risco é: "+6);
+else if ((idade >= 20 && idade <= 50) && (pesor >= 60 && pesor <= 90))
+  System.out.print("\nSeu grau de risco é: "+5);
+else if ((idade >= 20 && idade <= 50) && pesor > 90)
+  System.out.print("\nSeu grau de risco é: "+4);
+
+if (idade > 50 && pesor < 60)
+  System.out.print("\nSeu grau de risco é: "+3);
+else if (idade > 50 && (pesor >= 60 && pesor <= 90))
+  System.out.print("\nSeu grau de risco é: "+2);
+else if (idade > 50 && pesor > 90)
+  System.out.print("\nSeu grau de risco é: "+1);
+
+// 4. Leia 3 valores inteiros e ordene-os em ordem decrescente. Entrada: A entrada contem três números inteiros. Saída: Imprima a saída conforme foi especificado.
+
+System.out.println("\n\nQuestão 04");
+  
+List<Integer> lista = new ArrayList<Integer>();
+int cont = 0;
+int num = 0;
+
+while (cont != 3){
+    System.out.print("\nDigite um numero: ");
+    num = entrada.nextInt();
+    lista.add(num);
+    cont++;
+}
+Collections.sort(lista);      
+System.out.println("\nOrdem Crescente: "+ lista);
+Collections.sort(lista, Collections.reverseOrder());
+System.out.println("\nOrdem Decrescente: "+ lista);
+
+// 5. Leia 3 palavras sem espaço e ordene-as em ordem alfabética. Entrada: A entrada contem três strings. Saída: Imprima a saída conforme foi especificado. 
+
+System.out.println("\n\nQuestão 05");
+  
+List listan = new ArrayList();
+int contt = 0;
+
+while (contt != 3){
+    System.out.print("\nDigite um nome: ");
+    String nome = entrada.nextLine();
+    listan.add(nome);
+    contt++;
+}
+Collections.sort(listan);      
+System.out.println("\nOrdem Crescente: "+ listan);
+Collections.sort(listan, Collections.reverseOrder());
+System.out.println("\nOrdem Decrescente: "+ listan);
+
+// 6. Faça um programa que determina a data cronologicamente maior (mais recente) entre duas datas fornecidas pelo usuário. Cada data deve ser fornecida por três valores inteiros, onde o primeiro representa o dia, o segundo o mês e o terceiro o ano. Suponha que o usuário digitará corretamente os dados. 
+
+System.out.println("\n\nQuestão 06");
+  
+List listax = new ArrayList();
+int conttt = 0;
+
+while (conttt != 2){
+    System.out.print("\nDigite o Dia: ");
+    int dia = entrada.nextInt();
+    System.out.print("\nDigite o Mês: ");
+    int mes = entrada.nextInt();
+    System.out.print("\nDigite o Ano: ");
+    int ano = entrada.nextInt();
+    listax.add(dia+"/"+mes+"/"+ano);
+    conttt++;
+}
+Collections.sort(listax);      
+System.out.println("\nData mais antiga: "+ listax.get(0));
+System.out.println("\nData mais recente: "+ listax.get(1));
+
+  }
+}
